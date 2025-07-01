@@ -5,7 +5,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-skip_dir = {"venv", ".venv", "env", ".env", "__pycache__", ".git"}
+skip_dir = {"venv", ".venv", "env", ".env", "__pycache__", ".git", "dist", "build"}
 
 class FileManager:
     def __init__(self, output_filename):
