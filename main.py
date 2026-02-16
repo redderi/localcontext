@@ -17,7 +17,7 @@ def start_app():
     try:
         app.run()
     except Exception as e:
-        logger.exception("Can't run app")
+        logger.exception(f"Can't run app - {e}")
 
 if __name__ == "__main__":
     start_app()

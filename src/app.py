@@ -10,7 +10,9 @@ class App:
         parser = Parser()
         self.__operations = parser.parse()
         self.__filename = self.__operations.get("filename") or os.path.join(self.__base_dir, "localcontext.txt")
-        self.__fileManager = FileManager(self.__filename)
+        self.__exclude = self.__operations.get("exclude")
+
+        self.__fileManager = FileManager(self.__filename, exclude=self.__exclude)
 
     def run(self):
         with open(self.__filename, "w", encoding="utf-8") as file:
@@ -22,7 +24,7 @@ class App:
                 file.write("Дерево проекта:\n")
                 file.write(self.__fileManager.find_project_tree(self.__base_dir))
             file.write("-----------\n")
-            file.write("code:")
+            file.write("code:\n")
 
         self.__fileManager.find_file_code(
             path=self.__base_dir,

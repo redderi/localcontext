@@ -29,6 +29,11 @@ class Parser:
             action="store",
             help="print line number in code"
         )
+        self.__parser.add_argument(
+            "-e", "--exclude",
+            nargs="+",          
+            help="list of files or directories to skip"
+        )
 
     def parse(self):
         args = self.__parser.parse_args()
@@ -36,5 +41,6 @@ class Parser:
             "tree": args.tree,
             "system": args.system, 
             "number": args.number,
-            "filename": args.filename
+            "filename": args.filename,
+            "exclude": args.exclude or []  
         }
